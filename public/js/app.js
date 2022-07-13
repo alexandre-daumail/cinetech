@@ -4,8 +4,8 @@ const image_path = `https://image.tmdb.org/t/p/w1280`
 // - API key will only be available for this video since I'll delete it right after that but you can go to https://www.themoviedb.org/ , create an account and get a key for free.
 // - Image path is only the base url from where we'll get the images.
 
-const input = document.querySelector('.search input')
-const btn = document.querySelector('.search button')
+const input = document.getElementById('searchInput')
+const btn = document.getElementById('search-addon')
 const main_grid_title = document.querySelector('.favorites h1')
 const main_grid = document.querySelector('.favorites .movies-grid')
 
@@ -29,6 +29,7 @@ async function get_movie_by_search (search_term) {
 btn.addEventListener('click', add_searched_movies_to_dom)
 
 async function add_searched_movies_to_dom () {
+    console.log('clic');
     const data = await get_movie_by_search(input.value)
 
     main_grid_title.innerText = `Search Results...`
