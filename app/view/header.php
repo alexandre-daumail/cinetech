@@ -5,33 +5,38 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- BOOTSTRAP AND CSS -->
+    <link href="/docs/5.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../../public/css/style.css">
     <link rel="stylesheet" href="../../public/css/bootstrap.min.css">
+
+    <!-- JAVASCRIPT -->
     <script src="../../public/js/app.js" defer></script>
-    <title>Movie App</title>
+
+    <title><?= $title ?></title>
 </head>
 
 <body>
-    <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="index.php">Cinetech</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
 
-                <div class="collapse navbar-collapse" id="navbarColor02">
+    <header class="p-3 bg-dark text-white">
+        <div class="container">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <img src="../../public/img/logo cinetech.png" alt="logo du site cinetech"></a>
 
-                    <form class="d-flex search" data-dashlane-rid="5008df0137589be1" data-form-type="">
-                        <input class="form-control me-sm-2" type="text" placeholder="Search" data-dashlane-rid="48eec6f310124ee3" data-form-type="">
-                        <button class="btn btn-secondary my-2 my-sm-0" type="submit" data-dashlane-label="true" data-dashlane-rid="343f78349694bcf1" data-form-type="">Search</button>
-                    </form>
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+                    <li><a href="index.php" class="nav-link px-2 text-secondary">Accueil</a></li>
+                </ul>
 
-                    <div class="search">
-                        <input type="text" placeholder="Search Movie...">
-                        <button>Search</button>
-                    </div>
+                <form class="search col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" data-dashlane-rid="0a92745b09387db0" data-form-type="">
+                    <input type="search" class="form-control form-control-dark" placeholder="Film ou Série" aria-label="Search" data-dashlane-rid="ca456560d6b36b2a" data-form-type="">
+                </form>
+
+                <div class="text-end">
+                    <button type="button" class="btn btn-outline-light me-2">Connexion</button>
+                    <button type="button" class="btn btn-warning">Inscription</button>
                 </div>
             </div>
-        </nav>
-</div>
+        </div>
+    </header>
