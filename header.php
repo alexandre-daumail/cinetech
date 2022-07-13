@@ -21,7 +21,7 @@
 
 <body>
 
-    <nav class="py-2 bg-light border-bottom">
+    <nav class="py-2 bg-dark border-bottom">
         <div class="container d-flex flex-wrap">
             <ul class="nav me-auto">
                 <li class="nav-item"><a href="index.php" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>

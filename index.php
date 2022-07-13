@@ -6,7 +6,7 @@ ob_start();
 
 
 <body>
-    <div class="container">
+    <div class="container bg-dark">
         <div class="movies-container favorites">
             <h1>Favorites</h1>
             <div class="movies-grid">
