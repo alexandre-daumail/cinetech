@@ -32,7 +32,7 @@
 		});
 		//close modal when clicking the esc keyboard button
 		document.addEventListener('keydown', function(event){
-			(event.which=='27') && removeClass(self.element, 'cd-signin-modal--is-visible');
+			(event.key ==='Escape') && removeClass(self.element, 'cd-signin-modal--is-visible');
 		});
 
 		//hide/show password
