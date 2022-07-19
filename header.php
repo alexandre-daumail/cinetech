@@ -1,51 +1,86 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- BOOTSTRAP AND CSS -->
-    <link rel="stylesheet" href="public/css/style.css">
-    <link rel="stylesheet" href="public/css/bootstrap.css">
+	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 
-    <!-- Fontawesome kit -->
-    <script src="https://kit.fontawesome.com/2e455cc5f8.js" crossorigin="anonymous"></script>
-
-    <!-- JAVASCRIPT -->
-    <script src="public/js/app.js" defer></script>
-
-    <title><?= $title ?></title>
+	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+  	
+	<title>Accueil Cinetech</title>
 </head>
 
 <body>
+	<header class="cd-main-header">
+		<div class="cd-main-header__logo"><a href="index.php"><img src="img/logo cinetech.png" alt="Logo"></a></div>
 
-    <nav class="py-2 bg-dark border-bottom">
-        <div class="container d-flex flex-wrap">
-            <ul class="nav me-auto">
-                <li class="nav-item"><a href="index.php" class="nav-link link-dark px-2 active" aria-current="page">Home</a></li>
-            </ul>
-            <ul class="nav">
-                <li class="nav-item"><a href="login.php" class="nav-link link-dark px-2">Connexion</a></li>
-                <li class="nav-item"><a href="signup.php" class="nav-link link-dark px-2">Inscription</a></li>
-            </ul>
-        </div>
-    </nav>
+		<nav class="cd-main-nav js-main-nav">
+			<ul class="cd-main-nav__list js-signin-modal-trigger">
+				<!-- inser more links here -->
+				<li><a class="cd-main-nav__item cd-main-nav__item--signin" href="#0" data-signin="login">Connexion</a></li>
+				<li><a class="cd-main-nav__item cd-main-nav__item--signup" href="#0" data-signin="signup">Inscription</a></li>
+			</ul>
+		</nav>
+	</header>
 
-    <header class="py-3 mb-4 border-bottom">
+	<div class="cd-signin-modal js-signin-modal"> <!-- this is the entire modal form, including the background -->
+		<div class="cd-signin-modal__container"> <!-- this is the container wrapper -->
+			<ul class="cd-signin-modal__switcher js-signin-modal-switcher js-signin-modal-trigger">
+				<li><a href="#0" data-signin="login" data-type="login">Connexion</a></li>
+				<li><a href="#0" data-signin="signup" data-type="signup">Inscription</a></li>
+			</ul>
 
-        <div class="container d-flex flex-wrap justify-content-center">
-            <a href="index.php" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-                <img src="public/img/logo cinetech.png" alt="logo du site de cinetech" />
-                <span class="fs-4">Cinetech</span>
-            </a>
+			<div class="cd-signin-modal__block js-signin-modal-block" data-type="login"> <!-- log in form -->
+				<form class="cd-signin-modal__form">
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signin-email">E-mail</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-email" type="email" placeholder="E-mail">
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
 
-            <div class="input-group rounded">
-                <input id="searchInput" type="search" class="form-control rounded" placeholder="Film ou série" aria-label="Search" aria-describedby="search-addon" />
-                <span class="input-group-text border-0" id="search-addon">
-                    <i class="fas fa-search"></i>
-                </span>
-            </div>
-        </div>
-    </header>
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signin-password">Mot de passe</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" type="text"  placeholder="Password">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Cacher</a>
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width" type="submit" value="Login">
+					</p>
+				</form>
+				
+			</div> <!-- cd-signin-modal__block -->
+
+			<div class="cd-signin-modal__block js-signin-modal-block" data-type="signup"> <!-- sign up form -->
+				<form class="cd-signin-modal__form">
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace" for="signup-username">Pseudo</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-username" type="text" placeholder="Username">
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signup-email">E-mail</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" type="email" placeholder="E-mail">
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Mot de passe</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="text"  placeholder="Password">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding" type="submit" value="Valider">
+					</p>
+				</form>
+			</div> <!-- cd-signin-modal__block -->
+
+			<a href="#0" class="cd-signin-modal__close js-close">Quitter</a>
+		</div> <!-- cd-signin-modal__container -->
+	</div> <!-- cd-signin-modal -->

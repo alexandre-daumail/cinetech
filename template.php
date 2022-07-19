@@ -1,27 +1,9 @@
+<?php
 
+include_once('header.php');
 
-<?php require_once('header.php'); ?>
+echo $content;
 
-    <aside>
-        <?php
-        if (isset($_SESSION["error"])) {
-            echo $_SESSION["error"];
-            unset($_SESSION["error"]);
-        }
+include_once('footer.php');
 
-        if (isset($_SESSION["success"])) {
-            echo $_SESSION["success"];
-            unset($_SESSION["success"]);
-        }
-        ?>
-    </aside>
-
-    <?php 
-
-    echo $content ;
-       
-    require_once("footer.php");
-    ?>
-
-    
-
+?>
