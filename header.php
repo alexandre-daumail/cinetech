@@ -18,7 +18,7 @@
 
 		<nav class="cd-main-nav js-main-nav">
 			<ul class="cd-main-nav__list js-signin-modal-trigger">
-				<!-- inser more links here -->
+				<li><a class="cd-main-nav__item" href="index.php" >Accueil</a></li>
 				<li><a class="cd-main-nav__item cd-main-nav__item--signin" href="#0" data-signin="login">Connexion</a></li>
 				<li><a class="cd-main-nav__item cd-main-nav__item--signup" href="#0" data-signin="signup">Inscription</a></li>
 			</ul>
@@ -42,13 +42,13 @@
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signin-password">Mot de passe</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" type="text"  placeholder="Password">
-						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Cacher</a>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" type="text"  placeholder="Mot de passe">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Masquer</a>
 						<span class="cd-signin-modal__error">Error message here!</span>
 					</p>
 
 					<p class="cd-signin-modal__fieldset">
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width" type="submit" value="Login">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width" type="submit" value="Connexion">
 					</p>
 				</form>
 				
@@ -58,7 +58,7 @@
 				<form class="cd-signin-modal__form">
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--username cd-signin-modal__label--image-replace" for="signup-username">Pseudo</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-username" type="text" placeholder="Username">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-username" type="text" placeholder="Pseudo">
 						<span class="cd-signin-modal__error">Error message here!</span>
 					</p>
 
@@ -70,8 +70,8 @@
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Mot de passe</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="text"  placeholder="Password">
-						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Hide</a>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="text"  placeholder="Mot de passe">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Masquer</a>
 						<span class="cd-signin-modal__error">Error message here!</span>
 					</p>
 
