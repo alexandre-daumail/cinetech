@@ -12,7 +12,7 @@
 	ModalSignin.prototype.init = function() {
 		var self = this;
 		//open modal/switch form
-		for(var i =0; i < this.triggers.length; i++) {
+		for(var i = 0; i < this.triggers.length; i++) {
 			(function(i){
 				self.triggers[i].addEventListener('click', function(event){
 					if( event.target.hasAttribute('data-signin') ) {
@@ -36,7 +36,7 @@
 		});
 
 		//hide/show password
-		for(var i =0; i < this.hidePassword.length; i++) {
+		for(var i = 0; i < this.hidePassword.length; i++) {
 			(function(i){
 				self.hidePassword[i].addEventListener('click', function(event){
 					self.togglePassword(self.hidePassword[i]);
@@ -58,7 +58,7 @@
 	ModalSignin.prototype.togglePassword = function(target) {
 		var password = target.previousElementSibling;
 		( 'password' == password.getAttribute('type') ) ? password.setAttribute('type', 'text') : password.setAttribute('type', 'password');
-		target.textContent = ( 'Masquer' == target.textContent ) ? 'Afficher' : 'Masquer';
+		target.textContent = ( 'Masquer' == target.textContent ) ? 'Masquer' : 'Afficher';
 		putCursorAtEnd(password);
 	}
 

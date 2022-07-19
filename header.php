@@ -42,8 +42,8 @@
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signin-password">Mot de passe</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" type="text"  placeholder="Mot de passe">
-						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Masquer</a>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" type="password"  placeholder="Mot de passe">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Afficher</a>
 						<span class="cd-signin-modal__error">Error message here!</span>
 					</p>
 
@@ -70,8 +70,15 @@
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Mot de passe</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="text"  placeholder="Mot de passe">
-						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Masquer</a>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="password"  placeholder="Mot de passe">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Afficher</a>
+						<span class="cd-signin-modal__error">Error message here!</span>
+					</p>
+
+					<p class="cd-signin-modal__fieldset">
+						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Confirmation mot de passe</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="password"  placeholder="Confirmation mot de passe">
+						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Afficher</a>
 						<span class="cd-signin-modal__error">Error message here!</span>
 					</p>
 
