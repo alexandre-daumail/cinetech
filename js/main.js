@@ -2,8 +2,6 @@
 
 document.addEventListener("DOMContentLoaded", event => {
 
-(function(){
-
     //Login/Signup modal window - by CodyHouse.co
 	class ModalSignin {
 
@@ -149,6 +147,5 @@ document.addEventListener("DOMContentLoaded", event => {
       		el.value = el.value;
     	}
 	};
-})();
 
 });
