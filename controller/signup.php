@@ -1,32 +1,28 @@
 <?php
+session_start();
 
 require_once("../model/Dbh.php");
 require_once("../model/User.php");
 
 $user = new User;
 
-var_dump($_POST);
 try {
+
     foreach ($_POST as $key => $value) {
-        echo $value;
+
         if (empty($value)) {
-            echo "error";
-        } else { echo $value; }
+            throw new Exception("Veuillez remplir tous les champs", 1);
+        }
     }
-die();
+
     $login = $user->test_input($_POST["signup-username"]);
     $email = $user->test_input($_POST["signup-email"]);
     $password = $user->test_input($_POST["signup-password"]);
     $pwdrepeat = $user->test_input($_POST["signup-password-confirmation"]);
 
-    if (empty($login) || empty($password) || empty($pwdrepeat)) {
-
-        throw new Exception("Veuillez remplir tous les champs", 1);
-    }
-
     if (!preg_match("/^[a-zA-Z0-9]*$/", $login)) {
 
-        throw new Exception("Pseudo incorrect", 1);
+        throw new Exception("Le pseudo ne doit pas avoir de caractères spéciaux.", 1);
     }
 
     if ($password !== $pwdrepeat) {
@@ -43,11 +39,15 @@ die();
 
     } else {
 
-        header("location:index.php?signup=ok");
+        $_SESSION["success"] = 'Utilisateur créé avec succès';
+        header("location:../index.php?signup=ok");
+        exit();
     }
 
 } catch (Exception $e) {
 
-    echo $e->getMessage();
+    $_SESSION["error"] = $e->getMessage();
+    header("location:../index.php?signup=error");
+    exit();
 
 }

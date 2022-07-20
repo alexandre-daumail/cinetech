@@ -1,9 +1,3 @@
-<?php
-
-session_start();
-
-?>
-
 <!doctype html>
 <html lang="fr">
 
@@ -81,11 +75,11 @@ session_start();
 						<span class="cd-signin-modal__error">Error message here!</span>
 					</p>
 
-					<p class="cd-signin-modal__fieldset">
+					<!-- <p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signup-email">E-mail</label>
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-email" type="email" placeholder="E-mail" name="signup-email">
 						<span class="cd-signin-modal__error">Error message here!</span>
-					</p>
+					</p> -->
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Mot de passe</label>
@@ -113,3 +107,17 @@ session_start();
 		</div> <!-- cd-signin-modal__container -->
 
 	</div> <!-- cd-signin-modal -->
+
+	<aside>
+            <?php 
+            if(isset($_SESSION["error"])) {
+                echo $_SESSION["error"];
+                unset($_SESSION["error"]);
+            }
+            
+            if (isset($_SESSION["success"])){
+                echo $_SESSION["success"];
+                unset($_SESSION["success"]);
+            }
+            ?>
+	</aside>

@@ -42,7 +42,9 @@ class User extends Dbh
     public function addUser($login, $password)
     {
         if (!$this->_checkUser($login)) {
+
             throw new Exception("Pseudo pris", 1);
+            
         } else {
             $addUser = $this->connect()->prepare('INSERT INTO utilisateurs (login, password) VALUES  (:login, :password);');
 
