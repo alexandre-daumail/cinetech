@@ -1,32 +1,37 @@
 <?php
+session_start();
+
+require_once("../model/Dbh.php");
+require_once("../model/User.php");
+
+$user = new User;
 
 try {
 
-    if (isset($_POST)){
+    foreach ($_POST as $key => $value) {
 
-        $login = $_POST["login"];
-        $password = $_POST["password"];
-        
-        if (empty($login) || empty($password)) {
+        if (empty($value)) {
             throw new Exception("Veuillez remplir tous les champs", 1);
         }
-        
-        if (!preg_match("/^[a-zA-Z0-9]*$/", $login)) {
-            throw new Exception("Pseudo incorrect", 1);
-        }
-        
-        $user = new User;
-        
-        $user->loginUser($login, $password);
-
-        header("location:..\html\profil.html.php");
-        
     }
-    
+
+    $login = $user->test_input($_POST["signin-username"]);
+    $password = $user->test_input($_POST["signin-password"]);
+
+    if (!preg_match("/^[a-zA-Z0-9]*$/", $login)) {
+        throw new Exception("Pseudo incorrect", 1);
+    }
+
+    $user->loginUser($login, $password);
+
+    $_SESSION["success"] = 'Utilisateur connecté avec succès';
+
+    header("location:../index.php?signin=true&login=" . $login);
+    exit();
+
 } catch (Exception $e) {
 
-    session_start();
     $_SESSION["error"] = $e->getMessage();
-    header('location:../html/connexion.html.php');
-
+    header("location:../index.php?signin=error");
+    exit();
 }

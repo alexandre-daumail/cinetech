@@ -44,7 +44,7 @@ class User extends Dbh
         if (!$this->_checkUser($login)) {
 
             throw new Exception("Pseudo pris", 1);
-            
+
         } else {
             $addUser = $this->connect()->prepare('INSERT INTO utilisateurs (login, password) VALUES  (:login, :password);');
 
@@ -61,20 +61,20 @@ class User extends Dbh
     public function loginUser($login, $password)
     {
 
-        $login = $this->test_input($login);
-        $password = $this->test_input($password);
-
         $checkpassword = $this->_checkPwd($login, $password);
 
         if ($checkpassword == false) {
+
             throw new Exception("Login ou mot de passe incorrect", 1);
+
         } elseif ($checkpassword == true) {
+
             $stmt = $this->connect()->prepare('SELECT id FROM utilisateurs WHERE login = ?;');
 
-            if (!$stmt->execute(array($login))) {
-                $stmt = null;
-                header("location: ../index?error=stmtfailed");
-                exit();
+            if (!$stmt->execute([$login])) {
+
+                throw new Exception("Erreur BDD", 1);
+                
             }
 
             if ($stmt->rowCount() == 0) {
@@ -85,7 +85,6 @@ class User extends Dbh
 
             $user = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-            session_start();
             $_SESSION["login"] = $login;
             $_SESSION["id"] = $user[0]["id"];
         }

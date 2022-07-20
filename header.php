@@ -42,17 +42,19 @@
 			</ul>
 
 			<!-- log in form -->
-			<div class="cd-signin-modal__block js-signin-modal-block" data-type="login">
-				<form class="cd-signin-modal__form" >
+			<div class="cd-signin-modal__block js-signin-modal-block" data-type="login" id="signin" >
+
+				<form class="cd-signin-modal__form" action="controller/login.php" method="post" id="signin">
+
 					<p class="cd-signin-modal__fieldset">
-						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signin-email">Pseudo</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-login" type="email" placeholder="Pseudo">
+						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signin-login">Pseudo</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-login" type="text" placeholder="Pseudo" name="signin-username">
 						<span class="cd-signin-modal__error">Error message here!</span>
 					</p>
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signin-password">Mot de passe</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" type="password" placeholder="Mot de passe">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-password" type="password" placeholder="Mot de passe" name="signin-password">
 						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Afficher</a>
 						<span class="cd-signin-modal__error">Error message here!</span>
 					</p>
@@ -60,6 +62,7 @@
 					<p class="cd-signin-modal__fieldset">
 						<input class="cd-signin-modal__input cd-signin-modal__input--full-width" type="submit" value="Connexion">
 					</p>
+
 				</form>
 
 			</div> <!-- cd-signin-modal__block -->
