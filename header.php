@@ -8,8 +8,11 @@
 
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
-  	
-	<title>Accueil Cinetech</title>
+
+	<script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
+	<script src="js/main.js"></script> <!-- Resource JavaScript -->
+
+	<title><?= $title ?></title>
 </head>
 
 <body>
@@ -77,7 +80,7 @@
 
 					<p class="cd-signin-modal__fieldset">
 						<label class="cd-signin-modal__label cd-signin-modal__label--password cd-signin-modal__label--image-replace" for="signup-password">Confirmation mot de passe</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password" type="password"  placeholder="Confirmation mot de passe">
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signup-password-confirmation" type="password"  placeholder="Confirmation mot de passe">
 						<a href="#0" class="cd-signin-modal__hide-password js-hide-password">Afficher</a>
 						<span class="cd-signin-modal__error">Error message here!</span>
 					</p>

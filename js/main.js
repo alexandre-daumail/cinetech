@@ -1,4 +1,9 @@
+"use strict";
+
+document.addEventListener("DOMContentLoaded", event => {
+
 (function(){
+
     //Login/Signup modal window - by CodyHouse.co
 	function ModalSignin( element ) {
 		this.element = element;
@@ -83,12 +88,14 @@
 	}
 
 	var signinModal = document.getElementsByClassName("js-signin-modal")[0];
+	
 	if( signinModal ) {
 		new ModalSignin(signinModal);
 	}
 
 	// toggle main navigation on mobile
 	var mainNav = document.getElementsByClassName('js-main-nav')[0];
+	
 	if(mainNav) {
 		mainNav.addEventListener('click', function(event){
 			if( hasClass(event.target, 'js-main-nav') ){
@@ -134,3 +141,5 @@
     	}
 	};
 })();
+
+});
