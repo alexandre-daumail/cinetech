@@ -1,5 +1,4 @@
 <?php
-session_start();
 $title = "Cinetech - Passion Films/Séries";
 ob_start();
 ?>
