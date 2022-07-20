@@ -59,6 +59,7 @@ Login/Signup modal window - by CodyHouse.co
 .cd-main-header__logo {
   float: left;
   margin: 4px 0 0 5%;
+  font-size: 40px;
   /* reduce logo size on mobile and make sure it is left aligned with the transform-origin property */
   -webkit-transform-origin: 0 50%;
       -ms-transform-origin: 0 50%;

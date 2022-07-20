@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", event => {
 					removeClass(self.element, 'cd-signin-modal--is-visible');
 				}
 			});
+
 			//close modal when clicking the esc keyboard button
 			document.addEventListener('keydown', function (event) {
 				(event.key === 'Escape') && removeClass(self.element, 'cd-signin-modal--is-visible');
@@ -54,16 +55,6 @@ document.addEventListener("DOMContentLoaded", event => {
 					});
 				})(i);
 			}
-
-			//IMPORTANT - REMOVE THIS - it's just to show/hide error messages in the demo
-			this.blocks[0].getElementsByTagName('form')[0].addEventListener('submit', function (event) {
-				event.preventDefault();
-				self.toggleError(document.getElementById('signin-email'), true);
-			});
-			this.blocks[1].getElementsByTagName('form')[0].addEventListener('submit', function (event) {
-				event.preventDefault();
-				self.toggleError(document.getElementById('signup-username'), true);
-			});
 		}
 
 		togglePassword(target) {
@@ -74,28 +65,35 @@ document.addEventListener("DOMContentLoaded", event => {
 		}
 
 		showSigninForm(type) {
+
 			// show modal if not visible
 			!hasClass(this.element, 'cd-signin-modal--is-visible') && addClass(this.element, 'cd-signin-modal--is-visible');
+
 			// show selected form
 			for (var i = 0; i < this.blocks.length; i++) {
 				this.blocks[i].getAttribute('data-type') == type ? addClass(this.blocks[i], 'cd-signin-modal__block--is-selected') : removeClass(this.blocks[i], 'cd-signin-modal__block--is-selected');
 			}
+
 			//update switcher appearance
 			var switcherType = (type == 'signup') ? 'signup' : 'login';
+
 			for (var i = 0; i < this.switchers.length; i++) {
 				this.switchers[i].getAttribute('data-type') == switcherType ? addClass(this.switchers[i], 'cd-selected') : removeClass(this.switchers[i], 'cd-selected');
 			}
+
 		}
 
+		// used to show error messages in the form
 		toggleError(input, bool) {
-			// used to show error messages in the form
+
 			toggleClass(input, 'cd-signin-modal__input--has-error', bool);
 			toggleClass(input.nextElementSibling, 'cd-signin-modal__error--is-visible', bool);
+
 		}
 	};
 
 	var signinModal = document.getElementsByClassName("js-signin-modal")[0];
-	
+
 	if( signinModal ) {
 		new ModalSignin(signinModal);
 	}
@@ -104,11 +102,15 @@ document.addEventListener("DOMContentLoaded", event => {
 	var mainNav = document.getElementsByClassName('js-main-nav')[0];
 	
 	if(mainNav) {
-		mainNav.addEventListener('click', function(event){
+		mainNav.addEventListener('click', (event) => {
+
 			if( hasClass(event.target, 'js-main-nav') ){
+
 				var navList = mainNav.getElementsByTagName('ul')[0];
 				toggleClass(navList, 'cd-main-nav__list--is-visible', !hasClass(navList, 'cd-main-nav__list--is-visible'));
+
 			} 
+
 		});
 	}
 	
