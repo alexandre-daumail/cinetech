@@ -1,7 +1,5 @@
 <?php
 
-session_start();
-
 if (isset($_SESSION["id"])){
     header('location:profil.php');
     exit();
@@ -15,7 +13,7 @@ ob_start();
 
 <main>
 
-   <form action="../includes/inscription.inc.php" method="post">
+   <form action="controller/signup_controller.php" method="post">
 
         <fieldset>
 
@@ -31,7 +29,7 @@ ob_start();
                     
                     <button type="submit" name="inscription">inscription</button>
 
-                <p class="box-register">Déjà inscrit? <a href="connexion.html.php">Connectez-vous ici</a></p>
+                <p class="box-register">Déjà inscrit? <a href="login.php">Connectez-vous ici</a></p>
 
         </fieldset>
 
