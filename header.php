@@ -43,10 +43,10 @@
 
 			<!-- log in form -->
 			<div class="cd-signin-modal__block js-signin-modal-block" data-type="login">
-				<form class="cd-signin-modal__form">
+				<form class="cd-signin-modal__form" >
 					<p class="cd-signin-modal__fieldset">
-						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signin-email">E-mail</label>
-						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-email" type="email" placeholder="E-mail">
+						<label class="cd-signin-modal__label cd-signin-modal__label--email cd-signin-modal__label--image-replace" for="signin-email">Pseudo</label>
+						<input class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border" id="signin-login" type="email" placeholder="Pseudo">
 						<span class="cd-signin-modal__error">Error message here!</span>
 					</p>
 
