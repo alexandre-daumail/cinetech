@@ -8,13 +8,6 @@ $user = new User;
 
 try {
 
-/*     foreach ($_POST as $key => $value) {
-
-        if (empty($value)) {
-            throw new Exception("Veuillez remplir tous les champs", 1);
-        }
-    }
- */
     switch ($_POST) {
 
         case isset($_POST["update-login"]):
@@ -29,8 +22,6 @@ try {
             if (!preg_match("/^[a-zA-Z0-9]*$/", $_POST["newLogin"])) {
                 throw new Exception("Le pseudo doit être seulement contenir des caractères alphanumériques.", 1);
             }
-
-            $user = new User;
 
             $user->modifyUser($_SESSION["login"], $login, $pwd);
 
@@ -50,16 +41,16 @@ try {
                 throw new Exception("Les mots de passe ne correspondent pas", 1);
             }
 
-            $userManager = new User();
-
-            $pwdModification = $userManager->modifyPwd($_SESSION['login'], $_POST["password"], $_POST["newPwd"]);
+            $pwdModification = $user->modifyPwd($_SESSION['login'], $_POST["password"], $_POST["newPwd"]);
 
             if ($pwdModification === false) {
-                throw new Exception("Impossible de modifier le mot de passe", 1);
+                throw new Exception("Impossible de modifier le mot de passe, veuillez contacter l'administrateur", 1);
             }
 
-            header('location:../profil.php');
-        
+            $_SESSION["success"] = 'mot de passe modifié avec succès';
+
+            header('location:../account.php');
+
             break;
 
         case isset($_POST["delete"]):
@@ -75,8 +66,8 @@ try {
             break;
 
         default:
-        header('location:../profil.php');
-        }
+            header('location:../account.php');
+    }
 } catch (Exception $e) {
 
     session_start();
