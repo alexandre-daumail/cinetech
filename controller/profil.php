@@ -1,28 +1,42 @@
 <?php
 session_start();
-require_once('class-autoload.inc.php');
+
+require_once("../model/Dbh.php");
+require_once("../model/User.php");
+
+$user = new User;
 
 try {
 
+/*     foreach ($_POST as $key => $value) {
+
+        if (empty($value)) {
+            throw new Exception("Veuillez remplir tous les champs", 1);
+        }
+    }
+ */
     switch ($_POST) {
 
         case isset($_POST["update-login"]):
 
-            $login = $_SESSION["login"];
+            $login = $user->test_input($_POST["newLogin"]);
+            $pwd = $user->test_input($_POST["password"]);
 
             if (empty($_POST["newLogin"]) || empty($_POST["password"])) {
                 throw new Exception("Veuillez remplir tous les champs", 1);
             }
 
             if (!preg_match("/^[a-zA-Z0-9]*$/", $_POST["newLogin"])) {
-                throw new Exception("Pseudo incorrect", 1);
+                throw new Exception("Le pseudo doit être seulement contenir des caractères alphanumériques.", 1);
             }
 
             $user = new User;
 
-            $user->modifyUser($login, $_POST["newLogin"], $_POST["password"]);
+            $user->modifyUser($_SESSION["login"], $login, $pwd);
 
-            header("location:../html/profil.html.php");
+            $_SESSION["success"] = 'Login modifié avec succès';
+
+            header('location:../account.php');
 
             break;
 
@@ -44,8 +58,8 @@ try {
                 throw new Exception("Impossible de modifier le mot de passe", 1);
             }
 
-            header("location:../html/profil.html.php");
-
+            header('location:../profil.php');
+        
             break;
 
         case isset($_POST["delete"]):
@@ -61,12 +75,12 @@ try {
             break;
 
         default:
-            header("location:index.html.php");
-            break;
-    }
+        header('location:../profil.php');
+        }
 } catch (Exception $e) {
 
     session_start();
     $_SESSION["error"] = $e->getMessage();
-    header('location:../html/profil.html.php');
+    header('location:../profil.php');
+    exit();
 }

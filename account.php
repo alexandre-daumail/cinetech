@@ -38,7 +38,7 @@ if (!isset($_SESSION['id'])) {
         </form>
 
         <!-- PASSWORD MODIFY FORM -->
-        <form action="<?= htmlspecialchars('../includes/profil.inc.php'); ?>" method="post" id="pwd">
+        <form action="controller/profil.php" method="post" id="pwd">
 
             <fieldset>
 
@@ -64,7 +64,7 @@ if (!isset($_SESSION['id'])) {
         </form>
 
         <!-- ACCOUNT DELETE FORM -->
-        <form action="<?= htmlspecialchars('../includes/profil.inc.php'); ?>" method="post" id="delete">
+        <form action="controller/profil.php" method="post" id="delete">
 
             <fieldset>
 
