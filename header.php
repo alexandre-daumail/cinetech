@@ -41,11 +41,11 @@
 			</ul>
 		</nav>
 
-		<div class="search">
-            <input type="text" placeholder="Search Movie...">
-            <button>Rechercher...</button>
-        </div>
 	</header>
+	<div class="search">
+		<input type="text" placeholder="Search Movie...">
+		<button>Rechercher...</button>
+	</div>
 
 	<?php require_once('modal.php'); ?>
 	<aside>
