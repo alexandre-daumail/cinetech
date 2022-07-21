@@ -8,10 +8,12 @@
 	<link href='https://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
-	<link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+	<link rel="stylesheet" href="css/modal.css"> <!-- Header css -->
+	<link rel="stylesheet" href="css/app.css"> <!-- Film and TV shows styles -->
 
 	<script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
-	<script src="js/main.js"></script> <!-- Resource JavaScript -->
+	<script src="js/modal.js"></script> <!-- Script for the modal-->
+	<script src="js/app.js"></script> <!-- Script for the films and TV shows-->
 
 	<title><?= $title ?></title>
 
@@ -38,6 +40,11 @@
 
 			</ul>
 		</nav>
+
+		<div class="search">
+            <input type="text" placeholder="Search Movie...">
+            <button>Rechercher...</button>
+        </div>
 	</header>
 
 	<?php require_once('modal.php'); ?>
