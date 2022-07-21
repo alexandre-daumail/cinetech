@@ -23,6 +23,8 @@ try {
     }
 
     $user->loginUser($login, $password);
+    var_dump($_SESSION);
+    die();
 
     $_SESSION["success"] = 'Utilisateur connecté avec succès';
 

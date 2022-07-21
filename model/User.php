@@ -166,7 +166,7 @@ class User extends Dbh
         session_unset();
         session_destroy();
 
-        header("location: ../html/index.html.php?disconnected");
+        header("location:index.php?disconnected");
 
         exit();
 

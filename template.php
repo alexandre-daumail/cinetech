@@ -1,5 +1,7 @@
 <?php
-session_start();
+
+require_once("model/Dbh.php");
+require_once("model/User.php");
 
 include_once('header.php');
 

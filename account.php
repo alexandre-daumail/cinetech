@@ -1,7 +1,13 @@
 <?php
-$title = "profil - Passion Films/Séries";
-ob_start();
+session_start();
+
+if (!isset($_SESSION['id'])) {
+    header('location:index.php');
+} else {
+    $title = "Profil de " . $_SESSION["login"];
+    ob_start();
 ?>
+
 
     <main>
 
@@ -86,7 +92,6 @@ ob_start();
     ob_end_clean();
 
     require('template.php');
-    
-
+}
 
 ?>
