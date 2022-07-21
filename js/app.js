@@ -233,11 +233,11 @@ async function add_to_dom_trending () {
                 <div class="info">
                     <h2>${e.title}</h2>
                     <div class="single-info">
-                        <span>Rate: </span>
+                        <span>Note: </span>
                         <span>${e.vote_average} / 10</span>
                     </div>
                     <div class="single-info">
-                        <span>Release Date: </span>
+                        <span>Sortie : </span>
                         <span>${e.release_date}</span>
                     </div>
                 </div>
