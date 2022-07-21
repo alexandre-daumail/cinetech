@@ -56,10 +56,8 @@ try {
         case isset($_POST["delete"]):
 
             if (empty($_POST["password"])) {
-                throw new Exception("Veuillez remplir tous les champs", 1);
+                throw new Exception("Veuillez entrer le mot de passe", 1);
             }
-
-            $user = new User;
 
             $user->deleteUser($_SESSION['login'], $_POST["password"]);
 

@@ -152,11 +152,14 @@ class User extends Dbh
             $stmt = $this->connect()->prepare('DELETE FROM `utilisateurs` WHERE `utilisateurs`.`id` = :id ');
 
             if (!$stmt->execute(array(':id' => $_SESSION["id"]))) {
-                throw new Exception("Impossible de supprimer l'utilisateur", 1);
+                throw new Exception("Impossible de supprimer l'utilisateur, veuillez contacter l'administrateur.", 1);
             }
-            
-            $this->disconnect();
-        }
+
+            session_unset();
+            session_destroy();
+            header("location:../index.php?disconnected");
+
+            }
     }
 
     //Disconnect user
