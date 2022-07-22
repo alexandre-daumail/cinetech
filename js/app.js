@@ -172,6 +172,7 @@ document.addEventListener("DOMContentLoaded", event => {
     }
 
     // // Favorite Movies
+    
     // fetch_favorite_movies()
     // async function fetch_favorite_movies () {
     //     main_grid.innerHTML = ''

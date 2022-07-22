@@ -26,9 +26,12 @@
 		<nav class="cd-main-nav js-main-nav">
 			<ul class="cd-main-nav__list js-signin-modal-trigger">
 				<li><a class="cd-main-nav__item" href="index.php">Accueil</a></li>
+				<li><a class="cd-main-nav__item" href="movies.php">Films</a></li>
+				<li><a class="cd-main-nav__item" href="shows.php">Séries</a></li>
 
 				<?php if (isset($_SESSION['login'])) { ?>
 
+					<li><a class="cd-main-nav__item" href="favorites.php">Favoris</a></li>
 					<li><a class="cd-main-nav__item" href="account.php">Profil</a></li>
 					<li><a class="cd-main-nav__item" href="logout.php">Déconnexion</a></li>
 
