@@ -111,6 +111,7 @@ body {
     overflow-y: scroll;
     transform: scale(0);
     transition: 200ms ease-in-out transform;
+    z-index: 999;
 }
 .content {
     display: flex;
