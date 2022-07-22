@@ -1,7 +1,6 @@
 "use strict";
 
 document.addEventListener("DOMContentLoaded", event => {
-    console.log('test');
 
     const API_KEY = `69abcdc201c0712b6a89b7fe65700125`
     const image_path = `https://image.tmdb.org/t/p/w1280`
@@ -63,17 +62,35 @@ document.addEventListener("DOMContentLoaded", event => {
     }
 
     // POPUP
-    async function get_movie_by_id(id) {
-        const resp = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${API_KEY}&language=fr`)
+    async function get_movie_by_id(id, type) {
+
+        const resp = await fetch(`https://api.themoviedb.org/3/${type}/${id}?api_key=${API_KEY}&language=fr`)
         const respData = await resp.json()
         return respData
     }
 
     async function show_popup(card) {
+        
         popup_container.classList.add('show-popup')
 
         const movie_id = card.getAttribute('data-id')
-        const movie = await get_movie_by_id(movie_id)
+
+        const type = card.getAttribute('data-type')
+
+        const movie = await get_movie_by_id(movie_id, type)
+
+        
+        if (type === 'tv') { 
+            
+            var title = movie.name
+            var date = movie.first_air_date
+        }
+        else {
+
+            title = movie.title
+            date = movie.release_date
+
+        }
 
         popup_container.style.background = `linear-gradient(rgba(0, 0, 0, .8), rgba(0, 0, 0, 1)), url(${image_path + movie.poster_path})`
 
@@ -90,28 +107,19 @@ document.addEventListener("DOMContentLoaded", event => {
                     </div>
                 </div>
                 <div class="right">
-                    <h1>${movie.title}</h1>
-                    <h3>${movie.tagline}</h3>
+                    <h1>${title}</h1>
                     <div class="single-info-container">
                         <div class="single-info">
                             <span>Language:</span>
                             <span>${movie.spoken_languages[0].name}</span>
                         </div>
                         <div class="single-info">
-                            <span>Length:</span>
-                            <span>${movie.runtime} minutes</span>
-                        </div>
-                        <div class="single-info">
                             <span>Rate:</span>
                             <span>${movie.vote_average} / 10</span>
                         </div>
                         <div class="single-info">
-                            <span>Budget:</span>
-                            <span>$ ${movie.budget}</span>
-                        </div>
-                        <div class="single-info">
                             <span>Release Date:</span>
-                            <span>${movie.release_date}</span>
+                            <span>${date}</span>
                         </div>
                     </div>
                     <div class="genres">
@@ -223,10 +231,10 @@ document.addEventListener("DOMContentLoaded", event => {
 
         const movies = await get_trending_movies()
         const shows = await get_trending_shows()
-console.log(shows);
+
         trending_films.innerHTML = movies.slice(0, 6).map(e => {
             return `
-            <div class="card" data-id="${e.id}">
+            <div class="card" data-id="${e.id}" data-type="movie">
                 <div class="img">
                     <img src="${image_path + e.poster_path}">
                 </div>
@@ -247,7 +255,7 @@ console.log(shows);
 
         trending_shows.innerHTML = shows.slice(0, 6).map(e => {
             return `
-            <div class="card" data-id="${e.id}">
+            <div class="card" data-id="${e.id}" data-type="tv">
                 <div class="img">
                     <img src="${image_path + e.poster_path}">
                 </div>
