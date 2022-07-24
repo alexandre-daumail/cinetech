@@ -14,6 +14,7 @@
 	<script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
 	<script src="js/modal.js"></script> <!-- Script for the modal-->
 	<script src="js/app.js"></script> <!-- Script for the films and TV shows-->
+	<?= (isset($js)) ?  "<script src='js/" . $js . ".js'></script>" : ""?>
 
 	<title><?= $title ?></title>
 
