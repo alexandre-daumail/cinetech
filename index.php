@@ -1,6 +1,8 @@
 <?php
 session_start();
 $title = "Cinetech - Passion Films/Séries";
+$js = 'index';
+
 ob_start();
 ?>
 <main class="container">

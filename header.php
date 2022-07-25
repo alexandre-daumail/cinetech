@@ -10,10 +10,10 @@
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/modal.css"> <!-- Header css -->
 	<link rel="stylesheet" href="css/app.css"> <!-- Film and TV shows styles -->
+	<?= (isset($css)) ?  '<link rel="stylesheet" href="css/' . $css . '.css">' : ""?>
 
 	<script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
 	<script src="js/modal.js"></script> <!-- Script for the modal-->
-	<script src="js/app.js"></script> <!-- Script for the films and TV shows-->
 	<?= (isset($js)) ?  "<script src='js/" . $js . ".js'></script>" : ""?>
 
 	<title><?= $title ?></title>
@@ -47,8 +47,8 @@
 
 	</header>
 	<div class="search">
-		<input type="text" placeholder="Search Movie...">
-		<button>Rechercher...</button>
+		<input type="text" placeholder="Rechercher un titre">
+		<button id="search">Go</button>
 	</div>
 
 	<?php require_once('modal.php'); ?>

@@ -1,11 +1,13 @@
 <?php
 session_start();
 $title = "Cinetech - Films";
-$js = 'movies.js';
+$js = 'movies';
+$css = 'movies';
 ob_start();
 ?>
 
-<main class="container">
+<main>
+    <ul class="container"></ul>
 </main>
 
 <?php
