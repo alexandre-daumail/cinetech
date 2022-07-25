@@ -1,16 +1,20 @@
 'use strict'
-document.addEventListener('DOMContentLoaded', function loaded(){
-    const api = '3e1f13aaa5db3499e23b1fd92e3bed82'
-    var str = window.location.href
-    var url = new URL(str)
-    var id = url.searchParams.get("id");
-    var type = url.searchParams.get("type");
-    var article = document.getElementsByClassName('.container');
+document.addEventListener('DOMContentLoaded', (event) => {
+
+    const api = '3e1f13aaa5db3499e23b1fd92e3bed82';
+
+    let str = window.location.href
+    let url = new URL(str)
+    let id = url.searchParams.get("id");
+    let type = url.searchParams.get("type");
+    let article = document.getElementsByClassName('.container');
     
     let tvId = location.search.replace(/[^0-9\.]/g,'');
+    
     fetch('https://api.themoviedb.org/3/tv/'+tvId+'?api_key='+api+'&language=en-US')
     .then(response => response.json())
     .then(data => {
+        
         var container = document.querySelector('.container');
 
         let img2 = document.createElement('img');

@@ -14,6 +14,7 @@
 
 	<script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
 	<script src="js/modal.js"></script> <!-- Script for the modal-->
+	<script src="js/search.js"></script> <!-- Script for search module-->
 	<?= (isset($js)) ?  "<script src='js/" . $js . ".js'></script>" : ""?>
 
 	<title><?= $title ?></title>
@@ -47,8 +48,9 @@
 
 	</header>
 	<div class="search">
-		<input type="text" placeholder="Rechercher un titre">
-		<button id="search">Go</button>
+		<input type="text" id="search" placeholder="Rechercher un titre">
+		<ul class="hidden result">
+		<button>Go</button>
 	</div>
 
 	<?php require_once('modal.php'); ?>

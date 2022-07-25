@@ -2,7 +2,7 @@
 session_start();
 $title = "Cinetech - Séries";
 $js = 'show';
-$css = 'movies';
+$css = 'details';
 ob_start();
 ?>
 
