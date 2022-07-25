@@ -1,13 +1,13 @@
 <?php
 session_start();
-$title = "Cinetech - Films";
-$js = 'movies';
+$title = "Cinetech - Détails";
+$js = 'detail';
 $css = 'movies';
 ob_start();
 ?>
 
 <main>
-    <ul id="list"></ul>
+    
 </main>
 
 <?php

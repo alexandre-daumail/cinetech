@@ -1,53 +1,50 @@
-"use strict";
-
-document.addEventListener("DOMContentLoaded", event => {
-
-    const api = '69abcdc201c0712b6a89b7fe65700125';
-
+'use strict'
+document.addEventListener('DOMContentLoaded', function loaded() {
+    const api = '69abcdc201c0712b6a89b7fe65700125'
     const main = document.querySelector('main');
 
-    (function moviesGenres() {
-
-        let container = document.querySelector('.container');
+    function moviesGenres() {
 
         fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=' + api + '&language=fr')
-
             .then(response => response.json())
             .then(data => {
 
 
                 for (var i = 0; i < data.genres.length; i++) {
 
-                    let li = document.createElement('li');
+                    let link = document.createElement('a');
+                    link.classList.add('list');
+                    link.classList.add(data.genres[i].id);
+                    link.href = '#';
 
-                    li.setAttribute('data-genres', data.genres[i].id);
-                    li.innerHTML = data.genres[i].name;
+                    let nom = document.createElement('p');
+                    nom.innerHTML = data.genres[i].name;
 
-                    container.appendChild(li);
+                    main.appendChild(link);
+                    link.appendChild(nom);
                 }
 
-                var a = document.getElementsByTagName('li');
-                var list = Array.from(a)
+                var a = document.querySelectorAll('.list');
+                for (let j = 0; j < a.length; j++) {
 
-                for (let j = 0; j < list.length; j++) {
+                    a[j].addEventListener('click', (e) => {
+                        e.preventDefault();
+                        var idGenre = e.path[1].classList[1];
 
-                    list[j].addEventListener('click', (event) => {
-                        
-                        event.preventDefault();
-
-                        var idGenre = event.path[1].classList[1];
-
-                        fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + api + '&language=fr&with_genres=' + idGenre)
+                        fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + api + '&language=en-US&with_genres=' + idGenre)
                             .then(response => response.json())
                             .then(data => {
-
+                                // console.log(data)
                                 var newContainer = document.createElement('div');
-                                newContainer.classList.add('newC');
+                                newContainer.classList.add('movies-grid');
                                 main.appendChild(newContainer)
 
+                                // console.log(data)
                                 for (let k = 0; k < data.results.length; k++) {
 
                                     let cards = document.createElement('div');
+                                    cards.classList.add('card');
+
                                     newContainer.appendChild(cards);
 
                                     let lien = document.createElement('a');
@@ -66,13 +63,13 @@ document.addEventListener("DOMContentLoaded", event => {
                                 }
                             })
 
-                        container.classList.add('hidden')
 
                     })
                 }
 
             })
-    })();
+    }
+    moviesGenres();
 
     var search = document.querySelector('#search');
     var ul = document.querySelector('.result');
