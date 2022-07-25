@@ -1,11 +1,12 @@
 'use strict'
-document.addEventListener('DOMContentLoaded', function loaded() {
-    const api = '69abcdc201c0712b6a89b7fe65700125'
+document.addEventListener('DOMContentLoaded', (event) => {
+
+    const API_KEY = '69abcdc201c0712b6a89b7fe65700125'
     const main = document.querySelector('main');
 
     function moviesGenres() {
 
-        fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=' + api + '&language=fr')
+        fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=' + API_KEY + '&language=fr')
             .then(response => response.json())
             .then(data => {
 
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function loaded() {
                         e.preventDefault();
                         var idGenre = e.path[1].classList[1];
 
-                        fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + api + '&language=en-US&with_genres=' + idGenre)
+                        fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&language=en-US&with_genres=' + idGenre)
                             .then(response => response.json())
                             .then(data => {
                                 // console.log(data)
@@ -81,7 +82,8 @@ document.addEventListener('DOMContentLoaded', function loaded() {
         while (ul.firstChild) {
             ul.removeChild(ul.firstChild);
         }
-        fetch('https://api.themoviedb.org/3/search/movie?api_key=' + api + "&language=fr-FR&query=" + search.value)
+        fetch('https://api.themoviedb.org/3/search/movie?api_key=' + API_KEY + "&language=fr-FR&query=" + search.value)
+        
             .then(response => response.json())
             .then(data => {
                 var h4 = document.createElement('h4');
@@ -99,11 +101,12 @@ document.addEventListener('DOMContentLoaded', function loaded() {
                         ul.classList.remove('hidden');
                     }
                 }
+
                 var h4 = document.createElement('h4');
                 ul.appendChild(h4);
                 h4.textContent = 'Séries'
 
-                fetch('https://api.themoviedb.org/3/search/tv?api_key=' + api + "&language=fr-FR&query=" + search.value)
+                fetch('https://api.themoviedb.org/3/search/tv?api_key=' + API_KEY + "&language=fr-FR&query=" + search.value)
                     .then(response => response.json())
                     .then(data => {
                         for (var j = 0; j < 6; j++) {
