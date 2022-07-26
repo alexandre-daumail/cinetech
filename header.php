@@ -10,12 +10,12 @@
 	<link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
 	<link rel="stylesheet" href="css/modal.css"> <!-- Header css -->
 	<link rel="stylesheet" href="css/app.css"> <!-- Film and TV shows styles -->
-	<?= (isset($css)) ?  '<link rel="stylesheet" href="css/' . $css . '.css">' : ""?>
+	<?= (isset($css)) ?  '<link rel="stylesheet" href="css/' . $css . '.css">' : "" ?>
 
 	<script src="js/placeholders.min.js"></script> <!-- polyfill for the HTML5 placeholder attribute -->
 	<script src="js/modal.js"></script> <!-- Script for the modal-->
 	<script src="js/search.js"></script> <!-- Script for search module-->
-	<?= (isset($js)) ?  "<script src='js/" . $js . ".js'></script>" : ""?>
+	<?= (isset($js)) ?  "<script src='js/" . $js . ".js'></script>" : "" ?>
 
 	<title><?= $title ?></title>
 
@@ -47,23 +47,25 @@
 		</nav>
 
 	</header>
+
 	<div class="search">
 		<input type="text" id="search" placeholder="Rechercher un titre">
-		<ul class="hidden result">
 		<button>Go</button>
 	</div>
 
-	<?php require_once('modal.php'); ?>
-	<aside>
-		<?php
-		if (isset($_SESSION["error"])) {
-			echo $_SESSION["error"];
-			unset($_SESSION["error"]);
-		}
+	<ul class="hidden result"></ul>
 
-		if (isset($_SESSION["success"])) {
-			echo $_SESSION["success"];
-			unset($_SESSION["success"]);
-		}
-		?>
-	</aside>
+		<?php require_once('modal.php'); ?>
+		<aside>
+			<?php
+			if (isset($_SESSION["error"])) {
+				echo $_SESSION["error"];
+				unset($_SESSION["error"]);
+			}
+
+			if (isset($_SESSION["success"])) {
+				echo $_SESSION["success"];
+				unset($_SESSION["success"]);
+			}
+			?>
+		</aside>

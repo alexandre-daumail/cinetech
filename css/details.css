@@ -44,14 +44,14 @@ body {
     color: #FFD52D;
 }
 
-.container {
+article {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.container img {
+article img {
     width: 75%;
     overflow: hidden;
     border-radius: .5rem;
@@ -59,32 +59,23 @@ body {
     border: 1px solid rgba(255, 0, 0, 1);
 }
 
-.container span {
+article h1 {
     font-size: 50px;
     color: white;
     text-decoration: underline #FFD52D;
     margin-top: 50px;
 }
 
-.container .nom {
-    font-size: 45px;
-}
-
-.container .over {
+article .over {
     text-align: center;
 }
 
-.container .rel {
+article .rel {
     font-size: 45px;
 }
 
-.container .rank {
+article .rank {
     font-size: 45px;
-}
-
-.container p {
-    color: white;
-    font-size: 32px;
 }
 
 /* Section Commentaires */

@@ -7,18 +7,13 @@ ob_start();
 ?>
 
 <main>
-    <div class="container">
+    <article>
 
-    </div>
-
-
-    <hr>
+    </article>
 
     <section class="com">
         <h3>Commentaires</h3>
-        <ul class="comm">
-
-        </ul>
+        <ul class="comm"></ul>
 
     </section>
 
