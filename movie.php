@@ -1,8 +1,8 @@
 <?php
 session_start();
 $title = "Cinetech - Détails";
-$js = 'detail';
-$css = 'details';
+$js = 'movie';
+$css = 'movie';
 ob_start();
 ?>
 

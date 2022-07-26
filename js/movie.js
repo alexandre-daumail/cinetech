@@ -6,14 +6,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var str = window.location.href
     var url = new URL(str)
     var id = url.searchParams.get("id");
-    var type = url.searchParams.get("type");
     var com = document.querySelector('.comm');
-
 
     var article = document.querySelector('article')
 
     let movieId = location.search.replace(/[^0-9\.]/g, '');
-
 
     function similar(movieId) {
 
@@ -24,7 +21,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 var same = document.querySelector('.similar')
                 for (let i = 0; i < item.length; i++) {
                     let a = document.createElement('a');
-                    a.href = './detail.php?type=movie&id=' + item[i].id;
+                    a.href = './movie.php?type=movie&id=' + item[i].id;
                     let img = document.createElement('img');
                     img.src = 'https://image.tmdb.org/t/p/w500/' + item[i].poster_path;
                     img.alt = item[i].title;
@@ -102,28 +99,39 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         var section2 = document.createElement('section')
                         section2.classList.add('crew')
                         div.appendChild(section2)
+
                         var div2 = document.createElement('div')
                         section2.appendChild(div2)
+
                         var h4 = document.createElement('h4')
-                        h4.textContent = 'Le cast principal'
+                        h4.textContent = 'Principaux acteurs'
                         div2.appendChild(h4)
+
                         for (var i = 0; i < 12; i++) {
+
                             var p = document.createElement('p')
                             p.textContent = data.cast[i].name
                             div2.appendChild(p)
+
                         }
+
                         var div3 = document.createElement('div')
                         section2.appendChild(div3)
+
                         var h4 = document.createElement('h4')
                         h4.textContent = 'A la réalisation:'
                         div3.appendChild(h4)
+
                         var array = []
+
                         data.crew.forEach(element => {
                             if (element.department == "Directing") {
                                 array.push(element.name)
                             }
                         })
+
                         const slicedArray = array.slice(0, 12);
+
                         for (var k = 0; k < slicedArray.length; k++) {
 
                             var p = document.createElement('p')
