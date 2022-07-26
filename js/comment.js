@@ -1,11 +1,13 @@
 'use strict'
 document.addEventListener('DOMContentLoaded', (event) => {
 
-    var search = document.querySelector('#search');
-    var ul = document.querySelector('.result');
-
     var com = document.querySelector('.comm');
     var addComment = document.querySelector('#sub');
+    
+    var str = window.location.href
+    var url = new URL(str)
+    var id = url.searchParams.get("id");
+    var type = url.searchParams.get("type");
 
     var formsearch = new FormData()
 
@@ -18,17 +20,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
     })
         .then(response => response.json())
         .then(data => {
+
             if (data['message'].length != 0) {
+
                 for (var i = 0; data['message'].length; i++) {
+
                     var li = document.createElement('li')
                     com.prepend(li)
+
                     var titre = document.createElement('h6')
                     li.appendChild(titre)
                     titre.textContent = "Ecrit par " + data['message'][i].login
+
                     var date = new Date(data['message'][i].date).toLocaleDateString()
                     var insertDate = document.createElement('h7')
                     insertDate.textContent = "Ecrit le : " + date
                     li.appendChild(insertDate)
+
                     var content = document.createElement('p')
                     li.appendChild(content)
                     content.textContent = data['message'][i].comment

@@ -7,69 +7,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var url = new URL(str)
     var id = url.searchParams.get("id");
     var type = url.searchParams.get("type");
+    var com = document.querySelector('.comm');
+
 
     var article = document.querySelector('article')
 
     let movieId = location.search.replace(/[^0-9\.]/g, '');
 
-    fetch('https://api.themoviedb.org/3/movie/' + movieId + '?api_key=' + api + '&language=fr-FR')
-        .then(response => response.json())
-        .then(data => {
-
-            let img = document.createElement('img');
-            img.src = 'https://image.tmdb.org/t/p/w500/' + data.backdrop_path
-
-            let titre = document.createElement('h1');
-            titre.innerHTML = data.title;
-
-            let h2 = document.createElement('h2');
-            h2.innerHTML = 'Description:'
-
-            let overview = document.createElement('p');
-            overview.classList.add('over');
-            overview.innerHTML = data.overview;
-
-            let spanR = document.createElement('span');
-            spanR.innerHTML = 'Date de sortie'
-
-            let release = document.createElement('p');
-            release.classList.add('rel');
-            release.innerHTML = data.release_date;
-
-            let spanK = document.createElement('span');
-            spanK.innerHTML = 'Note:'
-
-            let rank = document.createElement('p');
-            rank.classList.add('rank')
-            rank.innerHTML = data.vote_average + '/10';
-
-            fetch('https://api.themoviedb.org/3/movie/' + movieId + '/credits?api_key=' + api + '&language=fr')
-                .then(response => response.json())
-                .then(data => {
-
-                    let spanA = document.createElement('span');
-                    article.appendChild(spanA);
-
-                    spanA.innerHTML = 'Casting:'
-                    for (let j = 0; j < data.cast.length; j++) {
-
-                        let actors = document.createElement('p');
-                        actors.innerHTML = data.cast[j].name + '  ' + 'as' + '  ' + data.cast[j].character
-
-
-                        article.appendChild(actors);
-                    }
-                })
-
-            article.appendChild(img)
-            article.appendChild(titre)
-            article.appendChild(h2)
-            article.appendChild(overview)
-            article.appendChild(spanR)
-            article.appendChild(release)
-            article.appendChild(spanK)
-            article.appendChild(rank);
-        })
 
     function similar(movieId) {
 
@@ -98,17 +42,21 @@ document.addEventListener('DOMContentLoaded', (event) => {
         fetch("https://api.themoviedb.org/3/tv/" + id + "?api_key=" + api + "&language=fr-FR")
             .then(response => response.json())
             .then(data => {
+
                 var h2 = document.createElement('h1')
                 h2.textContent = data.name
                 article.appendChild(h2)
+
                 var figure = document.createElement('figure')
                 article.appendChild(figure)
+
                 var image = document.createElement('img')
-                image.setAttribute('src', img + data.poster_path)
+                image.setAttribute('src', 'https://image.tmdb.org/t/p/w500/' + data.poster_path)
                 image.classList.add('rounded')
                 image.classList.add('float-start')
                 image.setAttribute('alt', data.name)
                 figure.appendChild(image)
+
                 var div = document.createElement('div')
                 article.appendChild(div)
                 var section = document.createElement('section')
@@ -212,13 +160,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
         fetch("https://api.themoviedb.org/3/movie/" + id + "?api_key=" + api + "&language=fr-FR")
             .then(response => response.json())
             .then(data => {
+
                 var h2 = document.createElement('h1')
                 h2.textContent = data.title
                 article.appendChild(h2)
                 var figure = document.createElement('figure')
                 article.appendChild(figure)
                 var image = document.createElement('img')
-                image.setAttribute('src', img + data.poster_path)
+                image.setAttribute('src', 'https://image.tmdb.org/t/p/w500/' + data.poster_path)
                 image.classList.add('rounded')
                 image.classList.add('float-start')
                 image.setAttribute('alt', data.title)
@@ -258,27 +207,35 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 var hr = document.createElement('hr')
                 div.appendChild(hr)
 
-                fetch(theMovieDb.common.base_uri + "movie/" + id + "/credits?api_key=" + theMovieDb.common.api_key + "&language=fr-FR")
+                fetch('https://api.themoviedb.org/3/movie/' + id + "/credits?api_key=" + api + "&language=fr-FR")
                     .then(response => response.json())
                     .then(data => {
+                        console.log(data);
                         var section2 = document.createElement('section')
                         section2.classList.add('crew')
                         div.appendChild(section2)
+
                         var div2 = document.createElement('div')
                         section2.appendChild(div2)
+
                         var h4 = document.createElement('h4')
-                        h4.textContent = 'Le cast principal'
+                        h4.textContent = 'Principaux acteurs :'
                         div2.appendChild(h4)
+
                         for (var i = 0; i < 10; i++) {
+
                             var p = document.createElement('p')
-                            p.textContent = data.cast[i].name
+                            p.textContent = data.cast[i].name + ' (' + data.cast[i].character + ')';
                             div2.appendChild(p)
                         }
+
                         var div3 = document.createElement('div')
                         section2.appendChild(div3)
+
                         var h4 = document.createElement('h4')
                         h4.textContent = 'A la réalisation:'
                         div3.appendChild(h4)
+
                         for (var j = 0; j < data.crew.length; j++) {
                             if (data.crew[j].department == "Directing") {
                                 var p = document.createElement('p')
@@ -287,25 +244,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                             }
                         }
                     })
-            })
-
-        fetch("https://api.themoviedb.org/3/movie/" + id + "/reviews" + "?api_key=" + api)
-            .then(response => response.json())
-            .then(data => {
-                for (var i = 0; i < 5; i++) {
-                    var li = document.createElement('li')
-                    com.appendChild(li)
-                    var titre = document.createElement('h6')
-                    li.appendChild(titre)
-                    titre.textContent = "Ecrit par " + data.results[i].author
-                    var date = new Date(data.results[i].updated_at).toLocaleDateString()
-                    var insertDate = document.createElement('h7')
-                    insertDate.textContent = "Ecrit le : " + date
-                    li.appendChild(insertDate)
-                    var content = document.createElement('p')
-                    li.appendChild(content)
-                    content.textContent = data.results[i].content
-                }
             })
     }
 

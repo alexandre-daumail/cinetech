@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     const API_KEY = `69abcdc201c0712b6a89b7fe65700125`
 
-    var main = document.querySelector('main')
     var search = document.querySelector('#search');
     var ul = document.querySelector('.result');
 
@@ -40,7 +39,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
                         li.appendChild(a);
 
-                        a.setAttribute("href", './detail.php?type=movie&id' + data.results[i].id)
+                        a.setAttribute("href", './detail.php?type=movie&id=' + data.results[i].id)
 
                         ul.classList.remove('hidden');
 
@@ -60,7 +59,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                                 var a = document.createElement('a');
                                 a.innerHTML = data.results[j].name
                                 li.appendChild(a);
-                                a.setAttribute("href", './show.php?type=tv&id' + data.results[j].id);
+                                a.setAttribute("href", './show.php?type=tv&id=' + data.results[j].id);
                                 ul.classList.remove('hidden');
                             }
                         }
