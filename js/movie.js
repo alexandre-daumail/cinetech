@@ -217,7 +217,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 fetch('https://api.themoviedb.org/3/movie/' + id + "/credits?api_key=" + api + "&language=fr-FR")
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data);
                         var section2 = document.createElement('section')
                         section2.classList.add('crew')
                         div.appendChild(section2)

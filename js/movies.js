@@ -35,12 +35,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&language=en-US&with_genres=' + idGenre)
                             .then(response => response.json())
                             .then(data => {
-                                // console.log(data)
                                 var newContainer = document.createElement('div');
                                 newContainer.classList.add('movies-grid');
                                 main.appendChild(newContainer)
 
-                                // console.log(data)
                                 for (let k = 0; k < data.results.length; k++) {
 
                                     let cards = document.createElement('div');
