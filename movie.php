@@ -14,7 +14,8 @@ ob_start();
     <section class="com">
         <h3>Commentaires</h3>
         <ul class="comm"></ul>
-
+    <input type="text" name="comment" placeholder="Votre commentaire">
+    <input type="button" name="submit" value="Envoyer" id="submit">
     </section>
 
     <hr>

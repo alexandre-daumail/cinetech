@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', (event) => {
 
     var com = document.querySelector('.comm');
-    var addComment = document.querySelector('#sub');
+    var addComment = document.querySelector('#submit');
 
     var str = window.location.href
     var url = new URL(str)
