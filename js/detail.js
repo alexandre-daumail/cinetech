@@ -24,8 +24,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 var same = document.querySelector('.similar')
                 for (let i = 0; i < item.length; i++) {
                     let a = document.createElement('a');
-                    a.href = './detail.php?movie=' + item[i].id;
-
+                    a.href = './detail.php?type=movie&id=' + item[i].id;
                     let img = document.createElement('img');
                     img.src = 'https://image.tmdb.org/t/p/w500/' + item[i].poster_path;
                     img.alt = item[i].title;
