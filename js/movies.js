@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     const API_KEY = '69abcdc201c0712b6a89b7fe65700125'
     const main = document.querySelector('main');
+    const ul = document.querySelector('#list')
 
     function moviesGenres() {
 
@@ -13,16 +14,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
                 for (var i = 0; i < data.genres.length; i++) {
 
-                    let link = document.createElement('a');
-                    link.classList.add('list');
-                    link.classList.add(data.genres[i].id);
-                    link.href = '#';
+                    let a = document.createElement('a');
+                    let li = document.createElement('li');
+                    
+                    a.classList.add('list');
+                    a.classList.add(data.genres[i].id);
+                    a.href = '#';
+                    a.innerHTML = data.genres[i].name;
 
-                    let nom = document.createElement('p');
-                    nom.innerHTML = data.genres[i].name;
-
-                    main.appendChild(link);
-                    link.appendChild(nom);
+                    li.appendChild(a);
+                    ul.appendChild(li);
                 }
 
                 var a = document.querySelectorAll('.list');

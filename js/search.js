@@ -45,6 +45,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
                     }
                 }
+
                 var h4 = document.createElement('h4');
                 ul.appendChild(h4);
                 h4.textContent = 'Séries'
@@ -53,13 +54,16 @@ document.addEventListener('DOMContentLoaded', (event) => {
                     .then(response => response.json())
                     .then(data => {
                         for (var j = 0; j < 6; j++) {
+
                             if (data.results[j].length != 0) {
+
                                 var li = document.createElement('li');
-                                ul.appendChild(li);
                                 var a = document.createElement('a');
+                                
                                 a.innerHTML = data.results[j].name
-                                li.appendChild(a);
                                 a.setAttribute("href", './show.php?type=tv&id=' + data.results[j].id);
+                                li.appendChild(a);
+                                ul.appendChild(li);
                                 ul.classList.remove('hidden');
                             }
                         }

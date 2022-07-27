@@ -50,6 +50,19 @@
 		</nav>
 
 	</header>
+	<div>
+		<?php
+		if (isset($_SESSION["error"])) {
+			echo $_SESSION["error"];
+			unset($_SESSION["error"]);
+		}
+
+		if (isset($_SESSION["success"])) {
+			echo $_SESSION["success"];
+			unset($_SESSION["success"]);
+		}
+		?>
+	</div>
 
 	<div class="search">
 		<input type="text" id="search" placeholder="Rechercher un titre">
@@ -58,17 +71,4 @@
 
 	<ul class="hidden result"></ul>
 
-		<?php require_once('modal.php'); ?>
-		<aside>
-			<?php
-			if (isset($_SESSION["error"])) {
-				echo $_SESSION["error"];
-				unset($_SESSION["error"]);
-			}
-
-			if (isset($_SESSION["success"])) {
-				echo $_SESSION["success"];
-				unset($_SESSION["success"]);
-			}
-			?>
-		</aside>
+	<?php require_once('modal.php'); ?>
