@@ -138,6 +138,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         e.preventDefault()
 
         var form = new FormData()
+        
         form.append('type', type)
         form.append('id', id)
 
@@ -147,6 +148,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         })
             .then(response => response.json())
             .then(data => {
+
                 if (data['code'] == 10){
                     fetch('./controller/favoris.php?action=coeur',{
                         method: 'POST',
