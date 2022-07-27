@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         fetch('https://api.themoviedb.org/3/discover/movie?api_key=' + API_KEY + '&language=fr-FR&with_genres=' + idGenre)
                             .then(response => response.json())
                             .then(data => {
-
                                 for (let k = 0; k < data.results.length; k++) {
 
                                     let cards = document.createElement('div');
@@ -54,8 +53,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
                                     let img = document.createElement('img');
                                     img.src = 'https://image.tmdb.org/t/p/w500/' + data.results[k].poster_path
-                                    img.alt = data.results[k].title;
-                                    a.innerHTML = data.results[k].original_name
+                                    img.alt = 'Poster du film ' + data.results[k].title;
+
+                                    a.innerHTML = data.results[k].title
+
                                     cards.appendChild(a);
                                     a.appendChild(img);
                                     grid.appendChild(cards);
