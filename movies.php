@@ -8,6 +8,8 @@ ob_start();
 
 <main>
     <ul id="list"></ul>
+    <section class="movies-grid"></section>
+
 </main>
 
 <?php
