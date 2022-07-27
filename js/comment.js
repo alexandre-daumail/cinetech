@@ -17,29 +17,29 @@ document.addEventListener('DOMContentLoaded', (event) => {
     formsearch.append('type', type)
 
 
-    fetch("https://api.themoviedb.org/3/" + type +"/" + id + "/reviews" + "?api_key=" + api)
-    .then(response => response.json())
-    .then(data => {
-        
-        for (var i = 0; i < data.results.length; i++) {
+    fetch("https://api.themoviedb.org/3/" + type + "/" + id + "/reviews" + "?api_key=" + api)
+        .then(response => response.json())
+        .then(data => {
 
-            var li = document.createElement('li')
-            com.appendChild(li)
+            for (var i = 0; i < data.results.length; i++) {
 
-            var titre = document.createElement('h6')
-            li.appendChild(titre)
-            titre.textContent = "Ecrit par " + data.results[i].author
+                var li = document.createElement('li')
+                com.appendChild(li)
 
-            var date = new Date(data.results[i].updated_at).toLocaleDateString()
-            var insertDate = document.createElement('h7')
-            insertDate.textContent = "Ecrit le : " + date
-            li.appendChild(insertDate)
+                var titre = document.createElement('h6')
+                li.appendChild(titre)
+                titre.textContent = "Ecrit par " + data.results[i].author
 
-            var content = document.createElement('p')
-            li.appendChild(content)
-            content.textContent = data.results[i].content
-        }
-    })
+                var date = new Date(data.results[i].updated_at).toLocaleDateString()
+                var insertDate = document.createElement('h7')
+                insertDate.textContent = "Ecrit le : " + date
+                li.appendChild(insertDate)
+
+                var content = document.createElement('p')
+                li.appendChild(content)
+                content.textContent = data.results[i].content
+            }
+        })
 
     fetch('./controller/comment.php?action=searchcomment', {
         method: 'POST',
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             if (data['message'].length != 0) {
 
-                for (var i = 0; data['message'].length; i++) {
+                for (var i = 0; i < data['message'].length; i++) {
 
                     var li = document.createElement('li')
                     com.prepend(li)
@@ -83,6 +83,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         form.append('id', id)
 
         if (commentaire.value != "") {
+
             fetch('./controller/comment.php?action=addfilm', {
                 method: 'POST',
                 body: form
@@ -104,7 +105,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         })
                             .then(response => response.json())
                             .then(data => {
-
+console.log(data);
                                 var li = document.createElement('li')
                                 com.prepend(li)
 

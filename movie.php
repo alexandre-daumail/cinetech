@@ -3,6 +3,7 @@ session_start();
 $title = "Cinetech - Détails";
 $js = 'movie';
 $css = 'movie';
+echo $_SESSION['id'];
 ob_start();
 ?>
 
@@ -14,7 +15,7 @@ ob_start();
     <section class="com">
         <h3>Commentaires</h3>
         <ul class="comm"></ul>
-        <input type="text" name="comment" placeholder="Votre commentaire">
+        <input type="text" id="addComment" name="comment" placeholder="Votre commentaire">
         <input type="button" name="submit" value="Envoyer" id="submit">
     </section>
 
