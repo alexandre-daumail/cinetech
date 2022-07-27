@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", event => {
     }
 
     async function show_popup(card) {
-        
+
         popup_container.classList.add('show-popup')
 
         const movie_id = card.getAttribute('data-id')
@@ -28,9 +28,9 @@ document.addEventListener("DOMContentLoaded", event => {
 
         const movie = await get_movie_by_id(movie_id, type)
 
-        
-        if (type === 'tv') { 
-            
+
+        if (type === 'tv') {
+
             var title = movie.name
             var date = movie.first_air_date
         }
@@ -87,37 +87,6 @@ document.addEventListener("DOMContentLoaded", event => {
         const x_icon = document.querySelector('.x-icon')
         x_icon.addEventListener('click', () => popup_container.classList.remove('show-popup'))
 
-        const heart_icon = popup_container.querySelector('.heart-icon')
-
-        const movie_ids = get_LS()
-        for (let i = 0; i <= movie_ids.length; i++) {
-            if (movie_ids[i] == movie_id) heart_icon.classList.add('change-color')
-        }
-
-        heart_icon.addEventListener('click', () => {
-            if (heart_icon.classList.contains('change-color')) {
-                remove_LS(movie_id)
-                heart_icon.classList.remove('change-color')
-            } else {
-                add_to_LS(movie_id)
-                heart_icon.classList.add('change-color')
-            }
-            fetch_favorite_movies()
-        })
-    }
-
-    // Local Storage
-    function get_LS() {
-        const movie_ids = JSON.parse(localStorage.getItem('movie-id'))
-        return movie_ids === null ? [] : movie_ids
-    }
-    function add_to_LS(id) {
-        const movie_ids = get_LS()
-        localStorage.setItem('movie-id', JSON.stringify([...movie_ids, id]))
-    }
-    function remove_LS(id) {
-        const movie_ids = get_LS()
-        localStorage.setItem('movie-id', JSON.stringify(movie_ids.filter(e => e !== id)))
     }
 
     // Trending Movies

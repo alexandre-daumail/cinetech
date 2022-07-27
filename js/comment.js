@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                         })
                             .then(response => response.json())
                             .then(data => {
-console.log(data);
+                                
                                 var li = document.createElement('li')
                                 com.prepend(li)
 
@@ -122,7 +122,7 @@ console.log(data);
                                 var content = document.createElement('p')
                                 li.appendChild(content)
                                 content.textContent = commentaire.value
-
+                                commentaire.value = "";
                             })
                     }
                 })
