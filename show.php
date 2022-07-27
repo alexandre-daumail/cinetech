@@ -2,11 +2,15 @@
 session_start();
 $title = "Cinetech - Séries";
 $js = 'show';
-$css = 'details';
+$css = 'movie';
 ob_start();
 ?>
 
 <main>
+
+<?php if(isset($_SESSION['id'])) :?>
+        <button type="button" class="addFav2" name="addfav2">Ajouter aux favoris</button>
+        <?php endif; ?>
 
     <div class="container">
 

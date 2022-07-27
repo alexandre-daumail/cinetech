@@ -8,6 +8,9 @@ ob_start();
 ?>
 
 <main>
+<?php if(isset($_SESSION['id'])) :?>
+        <button type="button" class="addFav2" name="addfav2">Ajouter aux favoris</button>
+        <?php endif; ?>
     <article>
 
     </article>

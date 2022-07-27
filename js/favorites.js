@@ -1,72 +1,107 @@
-'use strict'
-document.addEventListener('DOMContentLoaded', (event) => {
 
-    const heart_icon = document.querySelector('.heart-icon')
+document.addEventListener('DOMContentLoaded', function loaded() {
+    const api = '69abcdc201c0712b6a89b7fe65700125'
 
-    const movie_ids = get_LS()
-    
-    for (let i = 0; i <= movie_ids.length; i++) {
-        if (movie_ids[i] == movie_id) heart_icon.classList.add('change-color')
-    }
+    var article = document.querySelector('.film');
+    var article2 = document.querySelector('.tv');
 
-    heart_icon.addEventListener('click', () => {
-        if (heart_icon.classList.contains('change-color')) {
-            remove_LS(movie_id)
-            heart_icon.classList.remove('change-color')
-        } else {
-            add_to_LS(movie_id)
-            heart_icon.classList.add('change-color')
-        }
-        fetch_favorite_movies()
-    })
+    fetch('./controller/favoris.php?action=sortmov')
+        .then(response => response.json())
+        .then(data => {
 
-    // Local Storage
-    function get_LS() {
-        const movie_ids = JSON.parse(localStorage.getItem('movie-id'))
-        return movie_ids === null ? [] : movie_ids
-    }
-    function add_to_LS(id) {
-        const movie_ids = get_LS()
-        localStorage.setItem('movie-id', JSON.stringify([...movie_ids, id]))
-    }
-    function remove_LS(id) {
-        const movie_ids = get_LS()
-        localStorage.setItem('movie-id', JSON.stringify(movie_ids.filter(e => e !== id)))
-    }
+            if (data["code"] == 10) {
+                if (data.movie.length != 0) {
 
-    // Favorite Movies
-    fetch_favorite_movies()
-    async function fetch_favorite_movies() {
-        main_grid.innerHTML = ''
+                    var titre = document.createElement('h1')
+                    titre.textContent = 'Vos films favoris'
+                    
+                    var cin = document.querySelector('.film')
+                    cin.prepend(titre)
 
-        const movies_LS = await get_LS()
-        const movies = []
-        for (let i = 0; i <= movies_LS.length - 1; i++) {
-            const movie_id = movies_LS[i]
-            let movie = await get_movie_by_id(movie_id)
-            add_favorites_to_dom_from_LS(movie)
-            movies.push(movie)
-        }
-    }
+                    for (var i = 0; i < data.movie.length; i++) {
+                        fetch("http://api.themoviedb.org/3/movie/" + data.movie[i] + "?api_key=" + api + "&language=fr-FR")
+                            .then(response => response.json())
+                            .then(data => {
 
-    function add_favorites_to_dom_from_LS(movie_data) {
-        main_grid.innerHTML += `
-        <div class="card" data-id="${movie_data.id}">
-            <div class="img">
-                <img src="${image_path + movie_data.poster_path}">
-            </div>
-            <div class="info">
-                <h2>${movie_data.title}</h2>
-                <div class="single-info">
-                    <span>Rate: </span>
-                    <span>${movie_data.vote_average} / 10</span>
-                </div>
-                <div class="single-info">
-                    <span>Release Date: </span>
-                    <span>${movie_data.release_date}</span>
-                </div>
-            </div>
-        </div>
-    `
-    }
+                                var item = data;
+
+                                let link = document.createElement('a');
+                                link.href = './detail.php?movie=' + item.id;
+
+                                let img = document.createElement('img');
+                                img.src = 'https://image.tmdb.org/t/p/w500/' + item.poster_path;
+                                img.alt = item.title;
+
+                                // let title = document.createElement('p');
+                                // title.innerHTML = item.title;
+
+                                // let ranking = document.createElement('p');
+                                // ranking.innerHTML = 'Note: '+item.vote_average+'/10';
+
+                                article.appendChild(link);
+                                link.appendChild(img);
+                                // link.appendChild(title);
+                                // link.appendChild(ranking);
+
+                            })
+
+
+                    }
+
+
+                } else {
+                    var h2 = document.createElement('h2')
+                    h2.textContent = "Vous n'avez pas encore ajouté de film à vos favoris."
+                    film.appendChild(h2)
+                }
+
+                if (data.tv.length != 0) {
+
+                    var titre2 = document.createElement('h1')
+                    titre2.textContent = 'Vos series favorites'
+
+                    var tvshow = document.querySelector('.tv')
+                    tvshow.prepend(titre2)
+
+                    for (var i = 0; i < data.tv.length; i++) {
+
+                        fetch("http://api.themoviedb.org/3/tv/" + data.tv[i] + "?api_key=" + api + "&language=fr-FR")
+                            .then(response => response.json())
+                            .then(data => {
+
+                                var item = data;
+
+                                let link = document.createElement('a');
+                                link.href = './detail.php?tv=' + item.id;
+
+                                let img = document.createElement('img');
+                                img.src = 'https://image.tmdb.org/t/p/w500/' + item.poster_path;
+                                img.alt = item.name;
+
+                                // let title = document.createElement('p');
+                                // title.innerHTML = item.name;
+
+                                // let ranking = document.createElement('p');
+                                // ranking.innerHTML = 'Note: '+item.vote_average+'/10';
+
+                                article2.appendChild(link);
+                                link.appendChild(img);
+                                // link.appendChild(title);
+                                // link.appendChild(ranking);
+
+                            })
+                    }
+
+                } else {
+                    var h2 = document.createElement('h2')
+                    h2.textContent = "Vous n'avez pas encore ajouté de séries à vos favoris."
+                    serie.appendChild(h2)
+                }
+            } else {
+
+                var h1 = document.createElement('h1');
+                h1.textContent = data['message'];
+                article.appendChild(h1);
+            }
+        })
 })
