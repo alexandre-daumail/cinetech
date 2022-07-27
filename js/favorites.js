@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function loaded() {
 
                     for (var i = 0; i < data.tv.length; i++) {
 
-                        fetch("http://api.themoviedb.org/3/tv/" + data.tv[i] + "?api_key=" + api + "&language=fr-FR")
+                        fetch("https://api.themoviedb.org/3/tv/" + data.tv[i] + "?api_key=" + api + "&language=fr-FR")
                             .then(response => response.json())
                             .then(data => {
 
