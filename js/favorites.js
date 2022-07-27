@@ -18,26 +18,23 @@ document.addEventListener('DOMContentLoaded', function loaded() {
                     film.appendChild(title);
                     
                     for (var i = 0; i < data.movie.length; i++) {
+
                         fetch("http://api.themoviedb.org/3/movie/" + data.movie[i] + "?api_key=" + api + "&language=fr-FR")
                             .then(response => response.json())
                             .then(data => {
 
-                                var item = data;
-
                                 let link = document.createElement('a');
-                                link.href = './movie.php?type=movie&id=' + item.id;
+                                link.href = './movie.php?type=movie&id=' + data.id;
 
                                 let img = document.createElement('img');
-                                img.src = 'https://image.tmdb.org/t/p/w500/' + item.poster_path;
-                                img.alt = item.title;
+                                img.src = 'https://image.tmdb.org/t/p/w500/' + data.poster_path;
+                                img.alt = data.title;
 
                                 film.appendChild(link);
                                 link.appendChild(img);
 
                             })
-
                     }
-
 
                 } else {
                     var h2 = document.createElement('h2')
@@ -57,14 +54,12 @@ document.addEventListener('DOMContentLoaded', function loaded() {
                             .then(response => response.json())
                             .then(data => {
 
-                                var item = data;
-
                                 let link = document.createElement('a');
-                                link.href = './show.php?type=tv&id=' + item.id;
+                                link.href = './show.php?type=tv&id=' + data.id;
 
                                 let img = document.createElement('img');
-                                img.src = 'https://image.tmdb.org/t/p/w500/' + item.poster_path;
-                                img.alt = item.name;
+                                img.src = 'https://image.tmdb.org/t/p/w500/' + data.poster_path;
+                                img.alt = data.name;
 
                                 show.appendChild(link);
                                 link.appendChild(img);
@@ -73,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function loaded() {
                     }
 
                 } else {
-                    
+
                     var h2 = document.createElement('h2')
                     h2.textContent = "Vous n'avez pas encore ajouté de séries à vos favoris."
                     show.appendChild(h2)
