@@ -1,6 +1,6 @@
 <?php
 session_start();
-$title = "Cinetech - Séries";
+$title = "Cinetech - Détails";
 $js = 'show';
 $css = 'movie';
 ob_start();

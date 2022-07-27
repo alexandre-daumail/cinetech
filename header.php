@@ -16,7 +16,7 @@
 	<script src="js/modal.js"></script> <!-- Script for the modal-->
 	<script src="js/search.js"></script> <!-- Script for search module-->
 	<?= ($title == 'Cinetech - Mes Favoris') ? '<script src="js/favorites.js"></script>' : "" ?> <!-- Script for favorites module-->
-	<?= ($title != 'Cinetech - Passion Films/Séries') && ($title != 'Cinetech - Mes Favoris') ? '<script src="js/comment.js"></script>' : ""?> <!-- Script for comments module-->
+	<?= ($title == 'Cinetech - Détails') ? '<script src="js/comment.js"></script>' : ""?> <!-- Script for comments module-->
 	<?= (isset($js)) ?  "<script src='js/" . $js . ".js'></script>" : "" ?>
 
 	<title><?= $title ?></title>
