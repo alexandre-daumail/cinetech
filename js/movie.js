@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
     var str = window.location.href
     var url = new URL(str)
     var id = url.searchParams.get("id");
-    var com = document.querySelector('.comm');
 
     var article = document.querySelector('article')
 
@@ -19,18 +18,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
             var h2 = document.createElement('h1')
             h2.textContent = data.title
             article.appendChild(h2)
+
             var figure = document.createElement('figure')
             article.appendChild(figure)
+
             var image = document.createElement('img')
             image.setAttribute('src', 'https://image.tmdb.org/t/p/w500/' + data.poster_path)
             image.classList.add('rounded')
             image.classList.add('float-start')
             image.setAttribute('alt', data.title)
             figure.appendChild(image)
+
             var div = document.createElement('div')
             article.appendChild(div)
+
             var section = document.createElement('section')
             div.appendChild(section)
+            
             var p = document.createElement('p')
             var date = new Date(data.release_date).toLocaleDateString()
 
