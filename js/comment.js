@@ -1,6 +1,8 @@
 'use strict'
 document.addEventListener('DOMContentLoaded', (event) => {
 
+    const api = '69abcdc201c0712b6a89b7fe65700125'
+
     var com = document.querySelector('.comm');
     var addComment = document.querySelector('#submit');
 
@@ -13,6 +15,27 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     formsearch.append('idfilm', id)
     formsearch.append('type', type)
+
+
+    fetch("https://api.themoviedb.org/3/" + type +"/" + id + "/reviews" + "?api_key=" + api)
+    .then(response => response.json())
+    .then(data => {
+
+        for (var i = 0; i < 5; i++) {
+            var li = document.createElement('li')
+            com.appendChild(li)
+            var titre = document.createElement('h6')
+            li.appendChild(titre)
+            titre.textContent = "Ecrit par " + data.results[i].author
+            var date = new Date(data.results[i].updated_at).toLocaleDateString()
+            var insertDate = document.createElement('h7')
+            insertDate.textContent = "Ecrit le : " + date
+            li.appendChild(insertDate)
+            var content = document.createElement('p')
+            li.appendChild(content)
+            content.textContent = data.results[i].content
+        }
+    })
 
     fetch('bdd.php?action=searchcomment', {
         method: 'POST',
@@ -56,7 +79,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         form.append('id', id)
 
         if (commentaire.value != "") {
-            fetch('bdd.php?action=addfilm', {
+            fetch('./controller/comment.php?action=addfilm', {
                 method: 'POST',
                 body: form
             })
