@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
                 }
 
                 var a = document.querySelectorAll('.list');
+                
                 for (let j = 0; j < a.length; j++) {
 
                     a[j].addEventListener('click', (e) => {

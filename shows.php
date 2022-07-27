@@ -7,6 +7,8 @@ ob_start();
 ?>
 
 <main class="container">
+    <ul id="list"></ul>
+
 </main>
 
 <?php
