@@ -50,10 +50,6 @@ document.addEventListener("DOMContentLoaded", event => {
                     <div class="poster-img">
                         <img src="${image_path + movie.poster_path}" alt="">
                     </div>
-                    <div class="single-info">
-                        <span>Add to favorites:</span>
-                        <span class="heart-icon">&#9829;</span>
-                    </div>
                 </div>
                 <div class="right">
                     <h1>${title}</h1>
