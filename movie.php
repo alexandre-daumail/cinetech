@@ -3,7 +3,6 @@ session_start();
 $title = "Cinetech - Détails";
 $js = 'movie';
 $css = 'movie';
-echo $_SESSION['id'];
 ob_start();
 ?>
 
