@@ -15,31 +15,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
         .then(response => response.json())
         .then(data => {
 
-            var h2 = document.createElement('h1')
-            h2.textContent = data.title
-            article.appendChild(h2)
-
-            var figure = document.createElement('figure')
-            article.appendChild(figure)
-
-            var image = document.createElement('img')
+            let image = article.querySelector('img')
             image.setAttribute('src', 'https://image.tmdb.org/t/p/w500/' + data.poster_path)
-            image.classList.add('rounded')
-            image.classList.add('float-start')
             image.setAttribute('alt', data.title)
-            figure.appendChild(image)
 
-            var div = document.createElement('div')
-            article.appendChild(div)
+            let title = article.querySelector('h1')
+            title.textContent = data.title
 
-            var section = document.createElement('section')
-            div.appendChild(section)
-            
-            var p = document.createElement('p')
-            var date = new Date(data.release_date).toLocaleDateString()
+            let release_date = article.querySelector('#release');
+            let date = new Date(data.release_date).toLocaleDateString();
+            release_date.textContent = date
 
-            p.textContent = 'date de sortie: ' + date
-            section.appendChild(p)
             var ul = document.createElement('ul')
             ul.textContent = "Genre:"
             section.appendChild(ul)
